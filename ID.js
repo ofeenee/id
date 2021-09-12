@@ -36,6 +36,10 @@ function ID() {
         },
         enumerable: true
       },
+      validate: {
+        value: validateID,
+        enumerable: true
+      },
       generate: {
         value: function generateNewUUIDv4() {
           try {
@@ -45,10 +49,6 @@ function ID() {
             throw error;
           }
         },
-        enumerable: true
-      },
-      validate: {
-        value: validateID,
         enumerable: true
       }
     });
