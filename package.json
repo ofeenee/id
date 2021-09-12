@@ -1,0 +1,32 @@
+{
+  "name": "@ofeenee/id",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A class for validating, verifying, and managing an ID... and more.",
+  "main": "ID.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ofeenee/id.git"
+  },
+  "keywords": [
+    "id",
+    "class",
+    "uuid"
+  ],
+  "author": "ofeenee <ofeenee@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ofeenee/id/issues"
+  },
+  "homepage": "https://github.com/ofeenee/id#readme",
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "validator": "^13.6.0"
+  }
+}
