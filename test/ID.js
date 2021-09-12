@@ -48,19 +48,20 @@ describe('new ID()', function () {
     }
   });
 
-  it(`id assigned a random uuid v4`, function() {
+  it(`id.generate() a new random UUID v4`, function() {
     try {
-      id.set();
-      const uuidv4 = id.get();
+      const uuidv4 = id.generate();
+      id.set(uuidv4);
       assert.isString(uuidv4);
       assert.isTrue(isUUID(uuidv4));
+      assert.strictEqual(uuidv4, id.get());
     }
     catch (error) {
       assert.fail(error.message);
     }
   });
 
-  it(`assign (${validID}) to id instance (successfully)`, function() {
+  it(`id.set(${validID}) to id instance (successfully)`, function() {
     try {
       id.set(validID);
       const uuidv4 = id.get();
@@ -72,7 +73,7 @@ describe('new ID()', function () {
       assert.fail(error.message);
     }
   });
-  it(`assign (${invalidID}) to id instance (throws error)`, function() {
+  it(`id.set(${invalidID}) should throw an error (invalid UUID)`, function() {
     try {
       id.set(invalidID);
       assert.fail('should throw an error, seeing this proves otherwise.');
@@ -83,7 +84,7 @@ describe('new ID()', function () {
     }
   });
 
-  it(`get() should return last valid assigned uuid (${validID})`, function() {
+  it(`get() should return last valid assigned UUID (${validID})`, function() {
     try {
       const uuidv4 = id.get();
       assert.isString(uuidv4);
@@ -101,8 +102,8 @@ if (idToTest) {
   const id = ID();
   const valid = isUUID(idToTest);
   if (valid) {
-    describe(`testing the passed uuid: ${idToTest} (valid)`, function () {
-      // if the passed uuid is valid:
+    describe(`testing the passed UUID: ${idToTest} (valid)`, function () {
+      // if the passed UUID is valid:
       it(`id.validate(${idToTest}) should return true`, function () {
         try {
           const isValid = id.validate(idToTest);
@@ -155,7 +156,7 @@ if (idToTest) {
         }
       });
 
-      it(`id.set(${invalidID}) to assign invalid uuid (throw error)`, function () {
+      it(`id.set(${invalidID}) to assign invalid UUID (throw error)`, function () {
         try {
           const uuidv4 = id.set(invalidID);
           assert.fail('should throw an error, and this message proves otherwise');
@@ -179,7 +180,7 @@ if (idToTest) {
     });
   }
   else {
-    describe(`testing the passed uuid: ${idToTest} (invalid)`, function () {
+    describe(`testing the passed UUID: ${idToTest} (invalid)`, function () {
       it(`check id to be an ID instance`, function () {
         try {
           assert.instanceOf(id, ID);
