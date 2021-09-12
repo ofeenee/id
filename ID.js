@@ -6,20 +6,8 @@ function ID() {
   try {
     if (new.target === undefined) return new ID();
     Object.defineProperties(this, {
-      get: {
-        value: function getID() {
-          try {
-            if (this.id) return this.id;
-            else return null;
-          }
-          catch (error) {
-            throw error;
-          }
-        },
-        enumerable: true
-      },
       set: {
-        value: function setID(string = uuidv4()) {
+        value: (string) => {
           try {
             if (!validateID(string)) throw new Error('ID value is invalid.');
             else {
@@ -31,6 +19,29 @@ function ID() {
               return this.id;
             }
           } catch (error) {
+            throw error;
+          }
+        },
+        enumerable: true
+      },
+      get: {
+        value: () => {
+          try {
+            if (this.id) return this.id;
+            else return null;
+          }
+          catch (error) {
+            throw error;
+          }
+        },
+        enumerable: true
+      },
+      generate: {
+        value: function generateNewUUIDv4() {
+          try {
+            return uuidv4();
+          }
+          catch (error) {
             throw error;
           }
         },
