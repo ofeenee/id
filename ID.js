@@ -41,14 +41,7 @@ function ID() {
         enumerable: true
       },
       generate: {
-        value: function generateNewUUIDv4() {
-          try {
-            return uuidv4();
-          }
-          catch (error) {
-            throw error;
-          }
-        },
+        value: generateNewUUIDv4,
         enumerable: true
       }
     });
@@ -59,6 +52,8 @@ function ID() {
 }
 
 export default ID;
+export { generateNewUUIDv4 as genUUID };
+
 
 // HELPER FUNCTIONS
 function validateID(string) {
@@ -66,6 +61,15 @@ function validateID(string) {
     if (typeof string !== 'string' && !string) throw new Error('value is invalid.');
     if (isUUID(string)) return true;
     else return false;
+  }
+  catch (error) {
+    throw error;
+  }
+}
+
+function generateNewUUIDv4() {
+  try {
+    return uuidv4();
   }
   catch (error) {
     throw error;
