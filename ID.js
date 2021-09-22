@@ -6,6 +6,10 @@ function ID() {
   try {
     if (new.target === undefined) return new ID();
     Object.defineProperties(this, {
+      id: {
+        value: null,
+        configurable: true
+      },
       set: {
         value: (string) => {
           try {
@@ -14,7 +18,7 @@ function ID() {
             else {
               Object.defineProperty(this, 'id', {
                 value: string,
-                configurable: true
+                configurable: false
               });
 
               return this.id;
