@@ -13,6 +13,8 @@ function ID() {
       set: {
         value: (string) => {
           try {
+            string = string?.trim()?.toLowerCase();
+
             if (!validateID(string)) throw new Error('ID value is invalid.');
             else if (this.id !== null) throw new Error('Forbidden. ID has already been set.')
             else {
