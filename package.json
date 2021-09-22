@@ -1,6 +1,6 @@
 {
   "name": "@ofeenee/id",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "description": "A class for validating, verifying, and managing an ID... and more.",
   "main": "ID.js",
