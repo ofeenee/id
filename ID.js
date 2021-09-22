@@ -10,6 +10,7 @@ function ID() {
         value: (string) => {
           try {
             if (!validateID(string)) throw new Error('ID value is invalid.');
+            else if (this.id !== null) throw new Error('Forbidden. ID has already been set.')
             else {
               Object.defineProperty(this, 'id', {
                 value: string,
@@ -52,7 +53,7 @@ function ID() {
 }
 
 export default ID;
-export { generateNewUUIDv4 as genUUID };
+export { generateNewUUIDv4 as uuid };
 
 
 // HELPER FUNCTIONS
