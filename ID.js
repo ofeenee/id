@@ -2,12 +2,12 @@ import {v4 as uuidv4} from 'uuid';
 import validator from 'validator';
 const {isUUID} = validator;
 
-function ID() {
+function ID(id = null) {
   try {
-    if (new.target === undefined) return new ID();
+    if (new.target === undefined) return new ID(id);
     Object.defineProperties(this, {
       id: {
-        value: null,
+        value: validateID(id) ? id : null,
         configurable: true
       },
       set: {
@@ -65,7 +65,7 @@ export { generateNewUUIDv4 as uuid };
 // HELPER FUNCTIONS
 function validateID(string) {
   try {
-    if (typeof string !== 'string' && !string) throw new Error('value is invalid.');
+    if (typeof string !== 'string' && !string) return false;
     if (isUUID(string)) return true;
     else return false;
   }
