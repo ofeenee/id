@@ -43,20 +43,23 @@ function ID(id = null) {
         },
         enumerable: true
       },
-      validate: {
-        value: validateID,
-        enumerable: true
-      },
-      generate: {
-        value: generateNewUUIDv4,
-        enumerable: true
-      }
     });
   }
   catch (error) {
     throw error;
   }
 }
+
+Object.defineProperties(ID, {
+  validate: {
+    value: validateID,
+    enumerable: true
+  },
+  generate: {
+    value: generateNewUUIDv4,
+    enumerable: true
+  }
+});
 
 export default ID;
 export { generateNewUUIDv4 as uuid };
